@@ -188,27 +188,65 @@
         </div>
     </section>
 
-    <!-- Call to Action (Newsletter) -->
-    <section id="contact" class="newsletter section bg-secondary">
-        <div class="container newsletter-container">
-            <div class="newsletter-content">
-                <h2>Assine nossa Newsletter</h2>
-                <p>Fique por dentro das novidades, atualizações de estoque de máquinas e tecnologias da construção.</p>
+    <!-- Contato Interativo Form to WhatsApp -->
+    <section id="contact" class="contact-section section bg-secondary">
+        <div class="container contact-container">
+            <div class="contact-info">
+                <h2>Fale com a nossa Equipe</h2>
+                <p>Precisa de um orçamento ágil ou tirar uma dúvida técnica? Escolha o melhor canal e fale diretamente conosco.</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i data-lucide="phone-call" class="method-icon"></i>
+                        <div>
+                            <h4>WhatsApp Comercial</h4>
+                            <p><a href="https://wa.me/5594984365393" target="_blank" rel="noopener noreferrer">(94) 98436-5393</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i data-lucide="mail" class="method-icon"></i>
+                        <div>
+                            <h4>Eixo Comercial</h4>
+                            <p><a href="mailto:alessandro@fortlocacoes.com">alessandro@fortlocacoes.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i data-lucide="mail" class="method-icon"></i>
+                        <div>
+                            <h4>Eixo Corporativo</h4>
+                            <p><a href="mailto:fort.lloc@yahoo.com">fort.lloc@yahoo.com</a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="newsletter-form-wrapper">
-                <form class="newsletter-form">
-                    <div class="form-row">
-                        <input type="text" placeholder="Seu Nome" required>
-                        <input type="email" placeholder="Seu Email" required>
+            <div class="contact-form-wrapper">
+                <form id="waForm" class="contact-form">
+                    <div class="form-header">
+                        <h3>Solicitar Orçamento</h3>
+                        <p>Preencha os dados e receba resposta rápida pelo celular.</p>
                     </div>
-                    <label class="checkbox-label">
-                        <input type="checkbox" required>
-                        <span>Você concorda com a política de privacidade e termos de uso.</span>
-                    </label>
-                    <button type="submit" class="btn btn-primary"><i data-lucide="mail"></i> Assinar Agora</button>
-                    
-                    <p class="subscribed-count">Mais de <strong>35.000 profissionais</strong> já se inscreveram.</p>
+                    <div class="form-row">
+                        <input type="text" id="waName" placeholder="Seu Nome" required>
+                        <input type="text" id="waCompany" placeholder="Sua Empresa" required>
+                    </div>
+                    <div class="form-row-full">
+                        <select id="waInterest" required>
+                            <option value="">Equipamento de interesse...</option>
+                            <option value="Caminhão Guindauto (Munck)">Caminhão Guindauto (Munck)</option>
+                            <option value="Caminhão Pipa">Caminhão Pipa</option>
+                            <option value="Caminhão Plataforma">Caminhão Plataforma</option>
+                            <option value="Carroceria 3/4">Carroceria 3/4</option>
+                            <option value="Carreta Prancha">Carreta Prancha</option>
+                            <option value="Plataforma Elevatória">Plataforma Elevatória</option>
+                            <option value="Outros">Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-row-full">
+                        <textarea id="waMessage" placeholder="Como podemos ajudar e qual a previsão da locação?" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block"><i data-lucide="message-square"></i> Abrir WhatsApp Oficial</button>
+                    <p class="form-security"><i data-lucide="lock"></i> Redirecionamento 100% transparente e seguro.</p>
                 </form>
             </div>
         </div>
@@ -291,6 +329,23 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        // WhatsApp Form Logic
+        const waForm = document.getElementById('waForm');
+        if(waForm) {
+            waForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('waName').value;
+                const company = document.getElementById('waCompany').value;
+                const interest = document.getElementById('waInterest').value;
+                const message = document.getElementById('waMessage').value;
+                
+                const texto = `*NOVA SOLICITAÇÃO - FORT LOCAÇÕES*%0A%0A*Nome:* ${name}%0A*Empresa:* ${company}%0A*Interesse:* ${interest}%0A%0A*Atividade / Necessidade:*%0A_"${message}"_`;
+                
+                // Formata URL e abre janela
+                window.open(`https://wa.me/5594984365393?text=${texto}`, '_blank');
+            });
+        }
     </script>
 </body>
 </html>
