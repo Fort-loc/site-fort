@@ -641,6 +641,15 @@ h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; line-height: 1.2; }
     max-width: 350px;
 }
 
+.footer-map:hover > div > span.map-hover-btn {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.footer-map {
+    border-bottom: 4px solid var(--primary);
+}
+
 .social-links {
     display: flex;
     gap: 16px;
