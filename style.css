@@ -714,7 +714,7 @@ h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; line-height: 1.2; }
     .hero-title { font-size: 3.5rem; }
     .about-container { grid-template-columns: 1fr; gap: 50px; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
-    .newsletter-container { grid-template-columns: 1fr; }
+    .contact-container { grid-template-columns: 1fr; gap: 30px; }
 }
 
 @media (max-width: 768px) {
