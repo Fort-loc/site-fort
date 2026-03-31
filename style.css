@@ -177,10 +177,21 @@ h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; line-height: 1.2; }
     align-items: center;
 }
 
-.logo-img { height: 45px; }
-
-.logo-img { height: 45px; transition: var(--transition); }
+.logo-img {
+    height: 48px;
+    background: white;
+    padding: 5px 10px;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
 .logo-img:hover { transform: scale(1.05); }
+
+/* Remove o fundo branco do logo quando o header já estiver branco pelo scroll */
+.header.scrolled .logo-img {
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+}
 
 .logo-text { font-size: 1.8rem; font-weight: 900; color: white; line-height: 1; }
 .logo-text span { display: block; font-size: 0.9rem; color: var(--primary); letter-spacing: 2px; }
@@ -286,6 +297,46 @@ h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; line-height: 1.2; }
 .hero-actions {
     display: flex;
     gap: 16px;
+}
+
+.hero-stats-bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-md);
+    padding: 18px 28px;
+    width: fit-content;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.hero-stat strong {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+}
+
+.hero-stat span {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.65);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hero-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
 }
 
 /* =========================================
@@ -743,6 +794,8 @@ h1, h2, h3, h4 { color: var(--text-main); font-weight: 700; line-height: 1.2; }
     .hero-title { font-size: 2.8rem; }
     .hero-actions { flex-direction: column; }
     .btn { width: 100%; }
+    .hero-stats-bar { flex-wrap: wrap; gap: 16px; width: 100%; }
+    .hero-stat-divider { display: none; }
     
     .heavy-duty-banner { height: 600px; }
     .promo-card { position: static; max-width: 100%; margin-top: 10px; }
