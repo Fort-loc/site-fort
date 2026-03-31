@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fort Locações | Construção e Engenharia</title>
+    <!-- Favicon (placeholder) -->
+    <link rel="icon" type="image/x-icon" href="assets/logo.png">
+    
+    <!-- Modern Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="Fort Locações Logo" class="logo-img" onerror="this.onerror=null; this.outerHTML='<span class=\'logo-text\'>FORT <br><span>LOCAÇÕES (Logo Ausente)</span></span>';">
+            </a>
+            
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li><a href="#services" class="nav-link">Serviços</a></li>
+                    <li><a href="#about" class="nav-link">Sobre</a></li>
+                    <li><a href="#process" class="nav-link">Processos</a></li>
+                    <li><a href="#contact" class="nav-link btn-primary-sm">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobile-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Vídeo de Fundo -->
+        <video autoplay loop muted playsinline class="hero-video" poster="https://images.unsplash.com/photo-1541888086925-0c13ee4f42dc?auto=format&fit=crop&q=80&w=1920">
+            <source src="assets/video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <span class="badge">Líder em Locação</span>
+            <h1 class="hero-title">Prestando <span>serviço de qualidade</span></h1>
+            <p class="hero-desc">Atuando desde 2017 no mercado, nossa frota padronizada para as áreas da Vale e nossos equipamentos pesados garantem que a sua operação jamais pare.</p>
+            
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">
+                    <i data-lucide="send"></i> Fale Conosco
+                </a>
+                <a href="#services" class="btn btn-outline">
+                    <i data-lucide="settings"></i> Ver Serviços
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section id="services" class="services section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Soluções completas para Obras</h2>
+                <p>Equipamentos de alta performance e suporte dedicado.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Equipamento 1 -->
+                <div class="service-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/munck.jpg" alt="Caminhão Munck" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800';">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Caminhão Guindauto (Munck)</h3>
+                        <p>Ideal para içamento, movimentação e descarga de equipamentos pesados com total precisão e segurança.</p>
+                        <a href="#contact" class="link-arrow">Cotar Locação <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Equipamento 2 -->
+                <div class="service-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/pipa.jpg" alt="Caminhão Pipa" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1587849310243-d3ac34661815?auto=format&fit=crop&q=80&w=800';">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Caminhão Pipa</h3>
+                        <p>Essencial para umedecimento de vias, supressão de poeira e abastecimento contínuo dentro da operação.</p>
+                        <a href="#contact" class="link-arrow">Cotar Locação <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Equipamento 3 -->
+                <div class="service-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/carroceria34.jpg" alt="Carroceria 3/4" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=800';">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Caminhão Carroceria 3/4</h3>
+                        <p>Versatilidade e rapidez para transporte de suprimentos, peças e apoio logístico leve entre as bases.</p>
+                        <a href="#contact" class="link-arrow">Cotar Locação <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Equipamento 4 -->
+                <div class="service-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/prancha.jpg" alt="Carreta Prancha" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541888086925-0c13ee4f42dc?auto=format&fit=crop&q=80&w=800';">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Carreta Prancha</h3>
+                        <p>Solução robusta e dimensionada para o transporte seguro de maquinário bruto e cargas indivisíveis.</p>
+                        <a href="#contact" class="link-arrow">Cotar Locação <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Equipamento 5 -->
+                <div class="service-card">
+                    <div class="card-img-wrapper">
+                        <img src="assets/plataforma.jpg" alt="Plataforma Elevatória" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800';">
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Plataforma Elevatória</h3>
+                        <p>Acesso estável e seguro para trabalhos em altura, montagens estruturais e manutenção industrial.</p>
+                        <a href="#contact" class="link-arrow">Cotar Locação <i data-lucide="arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats & About Section -->
+    <section id="about" class="about section bg-light">
+        <div class="container about-container">
+
+            <div class="about-content">
+                <h2>Especialistas em Locação</h2>
+                <p>Nossa equipe sediada em Parauapebas, no Pará, atua com foco total em qualidade, confiabilidade e performance. Preparamos nossa frota sob medida para enfrentar os ambientes mais exigentes, garantindo eficiência, segurança e os resultados que a sua operação precisa.</p>
+                
+                <ul class="feature-list">
+                    <li><i data-lucide="check-circle-2"></i> <strong>Frota Especializada:</strong> Caminhão guindauto (Munck), Pipa, Carroceria 3/4, Prancha e Plataforma</li>
+                    <li><i data-lucide="check-circle-2"></i> <strong>Padrão Rigoroso Vale:</strong> Equipamentos e gestão de manutenção padronizados com os laudos exigidos</li>
+                    <li><i data-lucide="check-circle-2"></i> <strong>Manutenção Própria:</strong> Suporte técnico especializado para assegurar a máxima disponibilidade da frota</li>
+                    <li><i data-lucide="check-circle-2"></i> <strong>Base Estratégica:</strong> Estrutura localizada em Cidade Jardim, Parauapebas - PA</li>
+                    <li><i data-lucide="check-circle-2"></i> <strong>Tradição e Confiança:</strong> Comprometimento e entrega de resultados consistentes desde 2017</li>
+                </ul>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Heavy Duty Promo -->
+    <section class="heavy-duty section">
+        <div class="container">
+            <div class="section-header center">
+                <h2>Prontos para Trabalho Pesado</h2>
+                <p>Caminhões, guindastes e equipamento pesado estruturado para não te deixar na mão.</p>
+            </div>
+            
+            <div class="heavy-duty-banner">
+                <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&q=80&w=1200" alt="Máquina Pesada Fort Locações">
+                
+                <div class="promo-card hover-lift top-left">
+                    <h4>Tamanhos Massivos</h4>
+                    <p>Proporcionamos a você as melhores máquinas, custo-benefício garantido.</p>
+                </div>
+                
+                <div class="promo-card hover-lift bottom-right">
+                    <h4>Frente Robusta</h4>
+                    <p>Cabines seguras para trabalhadores mesmo sob carga total e chuva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action (Newsletter) -->
+    <section id="contact" class="newsletter section bg-secondary">
+        <div class="container newsletter-container">
+            <div class="newsletter-content">
+                <h2>Assine nossa Newsletter</h2>
+                <p>Fique por dentro das novidades, atualizações de estoque de máquinas e tecnologias da construção.</p>
+            </div>
+            
+            <div class="newsletter-form-wrapper">
+                <form class="newsletter-form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Seu Nome" required>
+                        <input type="email" placeholder="Seu Email" required>
+                    </div>
+                    <label class="checkbox-label">
+                        <input type="checkbox" required>
+                        <span>Você concorda com a política de privacidade e termos de uso.</span>
+                    </label>
+                    <button type="submit" class="btn btn-primary"><i data-lucide="mail"></i> Assinar Agora</button>
+                    
+                    <p class="subscribed-count">Mais de <strong>35.000 profissionais</strong> já se inscreveram.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Fort Locações Logo" class="footer-logo" onerror="this.onerror=null; this.outerHTML='<h2 class=\'footer-logo-text\'>FORT LOCAÇÕES <span>(Logo Ausente)</span></h2>';">
+                    <p>Referência na locação de equipamentos na área de mineração e indústrias em Parauapebas-PA. Prestando serviço de qualidade desde 2017.</p>
+                    <div class="social-links">
+                        <a href="#"><i data-lucide="facebook"></i></a>
+                        <a href="#"><i data-lucide="twitter"></i></a>
+                        <a href="#"><i data-lucide="instagram"></i></a>
+                        <a href="#"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Serviços</a></li>
+                        <li><a href="#">História</a></li>
+                        <li><a href="#">Equipe</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">Aluguel</a></li>
+                        <li><a href="#">Projetos</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Nossa Promessa</h4>
+                    <ul class="contact-list">
+                        <li><i data-lucide="info"></i> Cotação e envio gratuitos</li>
+                        <li><i data-lucide="info"></i> Equipamentos sempre revisados</li>
+                        <li><i data-lucide="info"></i> Processos limpos e transparentes</li>
+                    </ul>
+                    <div class="phone-highlight">
+                        <span>R. B 7, S/N, Lote 16 - Cidade Jardim</span>
+                        <span>Horário: Seg-Sex (08:00 - 18:00)</span>
+                        <strong>(31) 99131-0748</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fort Locações - Excelência Estrutural. Todos os direitos reservados.</p>
+                <div class="legal-links">
+                    <a href="#">Termos de Serviço</a>
+                    <a href="#">Política de Trocas</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Init Icons -->
+    <script>
+        lucide.createIcons();
+        
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-btn');
+        const navMenu = document.querySelector('.nav-list');
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Header Scroll
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if(window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
