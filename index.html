@@ -195,22 +195,38 @@
         </div>
     </section>
 
-    <!-- Heavy Duty Promo -->
+    <!-- Galeria / Slideshow -->
     <section class="heavy-duty section">
         <div class="container">
             <div class="section-header center">
-                <h2>Nossa Estrutura e Pátio</h2>
-                <p>Espaço projetado para garantir a máxima disponibilidade e manutenção constante de todos os nossos equipamentos.</p>
+                <h2>Nossos Equipamentos em Ação</h2>
+                <p>Veja nossa frota trabalhando nas maiores operações do Brasil. Fotos reais das nossas máquinas em campo.</p>
             </div>
-            
-            <div class="heavy-duty-banner">
-                <img src="assets/patio.jpg" alt="Estrutura e Pátio Fort Locações" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1200';">
-                
+
+            <div class="slideshow-banner" id="slideshowBanner">
+
+                <!-- Slides -->
+                <div class="slideshow-track" id="slideshowTrack">
+                    <!-- Populado dinamicamente pelo JS via galeria/manifest.json -->
+                </div>
+
+                <!-- Setas de navegação -->
+                <button class="slideshow-btn slideshow-prev" id="slidePrev" aria-label="Foto anterior">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="slideshow-btn slideshow-next" id="slideNext" aria-label="Próxima foto">
+                    <i data-lucide="chevron-right"></i>
+                </button>
+
+                <!-- Dots indicadores -->
+                <div class="slideshow-dots" id="slideshowDots"></div>
+
+                <!-- Cards de info (mantidos) -->
                 <div class="promo-card hover-lift top-left">
                     <h4>Manutenção Própria</h4>
                     <p>Oficina completa para revisões preventivas que garantem o selo e laudos de qualidade.</p>
                 </div>
-                
+
                 <div class="promo-card hover-lift bottom-right">
                     <h4>Logística Rápida</h4>
                     <p>Pátio organizado e estratégico para a rápida mobilização da frota até o seu projeto.</p>
@@ -391,6 +407,169 @@
                 window.open(`https://wa.me/5531991310748?text=${texto}`, '_blank');
             });
         }
+
+        // =============================================
+        //  SLIDESHOW DA GALERIA
+        // =============================================
+        (function() {
+            const track    = document.getElementById('slideshowTrack');
+            const dotsWrap = document.getElementById('slideshowDots');
+            const btnPrev  = document.getElementById('slidePrev');
+            const btnNext  = document.getElementById('slideNext');
+            const banner   = document.getElementById('slideshowBanner');
+
+            if (!track) return;
+
+            let slides   = [];
+            let current  = 0;
+            let timer    = null;
+            let touchStartX = 0;
+
+            // Carrega fotos e vídeos via galeria/manifest.json
+            fetch('galeria/manifest.json?_=' + Date.now())
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    // Suporta novo formato { files: [...] } e formato antigo { images: [...] }
+                    var media = [];
+                    if (data.files && data.files.length > 0) {
+                        media = data.files;
+                    } else if (data.images && data.images.length > 0) {
+                        media = data.images.map(function(f) { return { name: f, type: 'image' }; });
+                    }
+                    if (media.length === 0) {
+                        showEmpty();
+                    } else {
+                        buildSlides(media);
+                    }
+                })
+                .catch(function() { showEmpty(); });
+
+            function buildSlides(mediaList) {
+                track.innerHTML = '';
+                dotsWrap.innerHTML = '';
+                slides = [];
+
+                // Remove contador anterior se existir
+                var oldCounter = document.getElementById('slideCounter');
+                if (oldCounter) oldCounter.remove();
+
+                // Contador "1 / N"
+                var counter = document.createElement('div');
+                counter.className = 'slideshow-counter';
+                counter.id = 'slideCounter';
+                banner.appendChild(counter);
+
+                mediaList.forEach(function(item, i) {
+                    var src  = 'galeria/' + item.name;
+                    var type = item.type || 'image';
+
+                    var slide = document.createElement('div');
+                    slide.className = 'slideshow-slide' + (i === 0 ? ' active' : '');
+                    slide.dataset.type = type;
+
+                    if (type === 'video') {
+                        // Slide de vídeo
+                        var iconBadge = '<span class="slide-video-badge"><i data-lucide="play-circle"></i></span>';
+                        slide.innerHTML =
+                            '<video src="' + src + '" muted loop playsinline preload="metadata" ' +
+                            'style="width:100%;height:100%;object-fit:cover;display:block;"></video>' +
+                            '<div class="slide-overlay"></div>' + iconBadge;
+                    } else {
+                        // Slide de imagem
+                        slide.innerHTML =
+                            '<img src="' + src + '" alt="Equipamento Fort Locações" loading="lazy">' +
+                            '<div class="slide-overlay"></div>';
+                    }
+
+                    track.appendChild(slide);
+                    slides.push(slide);
+
+                    // Dot — vídeos têm ícone diferente
+                    var dot = document.createElement('button');
+                    dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', (type === 'video' ? 'Vídeo ' : 'Foto ') + (i+1));
+                    if (type === 'video') dot.classList.add('dot-video');
+                    (function(idx) {
+                        dot.addEventListener('click', function() { goTo(idx); });
+                    })(i);
+                    dotsWrap.appendChild(dot);
+                });
+
+                // Toca o vídeo do primeiro slide se for vídeo
+                playActiveVideo();
+                updateCounter();
+                startAuto();
+                lucide.createIcons();
+            }
+
+            function playActiveVideo() {
+                slides.forEach(function(s, i) {
+                    var vid = s.querySelector('video');
+                    if (!vid) return;
+                    if (i === current) { vid.play().catch(function(){}); }
+                    else               { vid.pause(); vid.currentTime = 0; }
+                });
+            }
+
+            function showEmpty() {
+                track.innerHTML = '<div class="slideshow-empty"><i data-lucide="image"></i><span>Adicione fotos na pasta <strong>galeria/</strong> e execute <strong>update-galeria.ps1</strong></span></div>';
+                if (btnPrev) btnPrev.style.display = 'none';
+                if (btnNext) btnNext.style.display = 'none';
+                lucide.createIcons();
+            }
+
+            function goTo(index) {
+                if (slides.length === 0) return;
+                slides[current].classList.remove('active');
+                var dots = document.querySelectorAll('.slideshow-dot');
+                if (dots[current]) dots[current].classList.remove('active');
+
+                current = (index + slides.length) % slides.length;
+
+                slides[current].classList.add('active');
+                if (dots[current]) dots[current].classList.add('active');
+                updateCounter();
+                resetAuto();
+            }
+
+            function updateCounter() {
+                var counter = document.getElementById('slideCounter');
+                if (counter && slides.length > 0) {
+                    counter.textContent = (current + 1) + ' / ' + slides.length;
+                }
+            }
+
+            function startAuto() {
+                timer = setInterval(function() { goTo(current + 1); }, 5000);
+            }
+
+            function resetAuto() {
+                clearInterval(timer);
+                startAuto();
+            }
+
+            if (btnPrev) btnPrev.addEventListener('click', function() { goTo(current - 1); });
+            if (btnNext) btnNext.addEventListener('click', function() { goTo(current + 1); });
+
+            // Teclado
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft')  goTo(current - 1);
+                if (e.key === 'ArrowRight') goTo(current + 1);
+            });
+
+            // Swipe mobile
+            if (banner) {
+                banner.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                banner.addEventListener('touchend', function(e) {
+                    var diff = touchStartX - e.changedTouches[0].screenX;
+                    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+                }, { passive: true });
+                banner.addEventListener('mouseenter', function() { clearInterval(timer); });
+                banner.addEventListener('mouseleave', function() { startAuto(); });
+            }
+        })();
     </script>
 </body>
 </html>

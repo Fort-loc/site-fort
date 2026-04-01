@@ -1,0 +1,20 @@
+====================================================
+  GALERIA DE FOTOS E VÍDEOS - FORT LOCAÇÕES
+====================================================
+
+Como adicionar fotos ou vídeos ao site:
+
+1. Coloque seus arquivos NESTA pasta (galeria/)
+   - Fotos aceitas : .jpg, .jpeg, .png, .webp
+   - Vídeos aceitos: .mp4, .webm, .mov
+
+2. Execute o script de atualização:
+   Clique duas vezes em: update-galeria.ps1
+   (ou rode no PowerShell: .\update-galeria.ps1)
+
+3. Pronto! O site é atualizado automaticamente.
+
+====================================================
+Tamanho recomendado das fotos : 1200x600 pixels ou maior
+Tamanho recomendado dos vídeos: até 50MB por arquivo
+====================================================
